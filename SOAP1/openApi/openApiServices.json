@@ -23,15 +23,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }  
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese platillo",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese platillo"
                     }
 
                 }
@@ -53,15 +53,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }  
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para esa drinks",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para esa drinks"  
                     }
                 }
             }
@@ -82,15 +82,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }  
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese postre",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese postre"   
                     }
                 }
             }
@@ -111,15 +111,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }  
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese platillo",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese platillo" 
                     }
                     
                 }
@@ -141,15 +141,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }   
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese bebidas",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese bebidas"
                     }
                 }
             }
@@ -171,15 +171,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        } 
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                        }
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese postre",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese postre"
                     }
                 }
             }
@@ -200,16 +200,16 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
                         }
                             
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese platillo",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese platillo"
                     }
                     
                 }
@@ -231,15 +231,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                        }
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para esa bebida",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para esa bebida"
                     }
                 }
             }
@@ -260,15 +260,15 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/recommendation"
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                        }
                     },
 
                     "404": {
-                        "description": "No ofrecemos recomendaciones para ese postre",
-                        "schema": {
-                            "$ref": "#/components/schemas/recommendation"
-                        }    
+                        "description": "No ofrecemos recomendaciones para ese postre"
                     }
                 }
             }
@@ -276,59 +276,12 @@
     },
     "components": {
         "schemas": {
-            "recommendation": {
-                
-                "type": "object",
-                "properties": {
-                    "dishes": {
-                        "type": "object",
-                        "properties": {
-                            "maindishes": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "combination": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "drinks": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "combination": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "desserts": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "combination": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          "Recomendacion": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
+          }
         }
     }
 }
