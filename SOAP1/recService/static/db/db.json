@@ -3,27 +3,195 @@
     "arroz_con_pollo": {
       "name": "Arroz con Pollo",
       "combination": [
-        "bebida1",
-        "postre1"
+        "Coca Cola",
+        "Torta chilena"
       ]
-      } 
     },
-    "drinks": {
-      "cafe": {
-        "name": "Café",
-        "combination": [
-          "postre2",
-          "comida1"
-        ]
-        } 
-      },
-      "desserts": {
-        "dessert1": {
-          "name": "torta",
-          "combination": [
-            "comida2",
-            "bebida2"
-          ]
-          } 
-        }
+    "arroz_con_cerdo": {
+      "name": "Arroz con Cerdo",
+      "combination": [
+        "Pepsi",
+        "Pastel de zanahoria"
+      ]
+    },
+    "pizza": {
+      "name": "Pizza",
+      "combination": [
+        "Coca Cola",
+        "Tiramisu"
+      ]
+    },
+    "sushi": {
+      "name": "Sushi",
+      "combination": [
+        "Sake",
+        "Mochi"
+      ]
+    },
+    "tacos": {
+      "name": "Tacos",
+      "combination": [
+        "Agua de horchata",
+        "Churros"
+      ]
+    },
+    "pasta_carbonara": {
+      "name": "Pasta Carbonara",
+      "combination": [
+        "Vino tinto",
+        "Tiramisu"
+      ]
+    },
+    "curry": {
+      "name": "Curry",
+      "combination": [
+        "Lassi",
+        "Gulab jamun"
+      ]
+    },
+    "paella": {
+      "name": "Paella",
+      "combination": [
+        "Sangría",
+        "Flan"
+      ]
+    },
+    "hamburguesa": {
+      "name": "Hamburguesa",
+      "combination": [
+        "Fanta",
+        "Helado de fresa"
+      ]
+    },
+    "sashimi": {
+      "name": "Sashimi",
+      "combination": [
+        "Té verde",
+        "Dorayaki"
+      ]
+    },
+    "lasagna": {
+      "name": "Lasagna",
+      "combination": [
+        "Vino blanco",
+        "Cannoli"
+      ]
+    },
+    "pad_thai": {
+      "name": "Pad Thai",
+      "combination": [
+        "Limonada tailandesa",
+        "Arroz pegajoso con mango"
+      ]
+    },
+    "spaghetti_bolognese": {
+      "name": "Spaghetti Bolognese",
+      "combination": [
+        "Vino tinto",
+        "Tiramisu"
+      ]
+    }
+  },
+  "drinks": {
+    "cafe": {
+      "name": "Café",
+      "combination": [
+        "Pasta carbonara",
+        "Tiramisu"
+      ]
+    },
+    "te_verde": {
+      "name": "Té Verde",
+      "combination": [
+        "Sashimi",
+        "Dorayaki"
+      ]
+    },
+    "limonada": {
+      "name": "Limonada",
+      "combination": [
+        "Tacos",
+        "Churros"
+      ]
+    },
+    "sangria": {
+      "name": "Sangría",
+      "combination": [
+        "Paella",
+        "Flan"
+      ]
+    },
+    "margarita": {
+      "name": "Margarita",
+      "combination": [
+        "Tacos",
+        "Churros"
+      ]
+    },
+    "smoothie_de_frutas": {
+      "name": "Smoothie de Frutas",
+      "combination": [
+        "Sushi",
+        "Mochi"
+      ]
+    },
+    "cerveza": {
+      "name": "Cerveza",
+      "combination": [
+        "Enchiladas",
+        "Galleta Oreo"
+      ]
+    },
+    "vino_tinto": {
+      "name": "Vino Tinto",
+      "combination": [
+        "Spaghetti bolognese",
+        "Tiramisu"
+      ]
+    },
+    "mojito": {
+      "name": "Mojito",
+      "combination": [
+        "Paella",
+        "Flan"
+      ]
+    }
+  },
+  "desserts": {
+    "tres_leches": {
+      "name": "Tres leches",
+      "combination": [
+        "Arroz con Pollo",
+        "Coca Cola"
+      ]
+    },
+    "chocolate_caliente": {
+      "name": "Chocolate Caliente",
+      "combination": [
+        "Arroz con Cerdo",
+        "Pepsi"
+      ]
+    },
+    "churros": {
+      "name": "Churros",
+      "combination": [
+        "Tacos",
+        "Limonada"
+      ]
+    },
+    "dorayaki": {
+      "name": "Dorayaki",
+      "combination": [
+        "Pescado frito",
+        "Té verde"
+      ]
+    },
+    "flan": {
+      "name": "Flan",
+      "combination": [
+        "Paella",
+        "Sangría"
+      ]
+    }
   }
+}
