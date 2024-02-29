@@ -21,7 +21,7 @@ def default(request,type,value):
     mainFoodKeys = list(mainDishes.keys()) + list(drinks.keys()) + list(desserts.keys())
 
     if value not in mainFoodKeys:
-        return HttpResponse('No ofrecemos recomendaciones para ese platillo', status=404)
+        return HttpResponse('No ofrecemos recomendaciones para esa solicitud', status=404)
     
     try:
         serviceRecommendation = str(data[type][value]["combination"])

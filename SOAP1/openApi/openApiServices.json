@@ -1,20 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "API Servicio Inteligente de recomendacion de comidas",
+        "title": "API Servicio Inteligente de recommendation de comidas",
         "version": "1.0"
     },
     "host": "virtserver.swaggerhub.com",
     "schemes": ["http"],
     "paths": {
-        "/recomendacion/artificial/PlatoPrincipal/{valor}": {
+        "/recommendation/artificial/maindishes/{value}": {
             "get": {
                 "summary": "Obtener recomendación artificial para plato principal",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -23,20 +23,28 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese platillo",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
                         }    
                     }
+
                 }
             }
         },
-        "/recomendacion/artificial/Bebida/{valor}": {
+        "/recommendation/artificial/drinks/{value}": {
             "get": {
-                "summary": "Obtener recomendación artificial para bebida",
+                "summary": "Obtener recomendación artificial para drinks",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'Agua', 'Te', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'Agua', 'Te', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -45,20 +53,27 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para esa drinks",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
                         }    
                     }
                 }
             }
         },
-        "/recomendacion/artificial/Postre/{valor}": {
+        "/recommendation/artificial/desserts/{value}": {
             "get": {
                 "summary": "Obtener recomendación artificial para postre",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'helado', 'galletas', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'helado', 'galletas', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -67,20 +82,27 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese postre",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
                         }    
                     }
                 }
             }
         },
-        "/recomendacion/predeterminado/PlatoPrincipal/{valor}": {
+        "/recommendation/default/maindishes/{value}": {
             "get": {
                 "summary": "Obtener recomendación predeterminada para plato principal",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -89,19 +111,26 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese platillo",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
                         }    
                     }
                     
                 }
             }
         },
-        "/recomendacion/predeterminado/Bebida/{valor}": {
+        "/recommendation/default/drinks/{value}": {
             "get": {
-                "summary": "Obtener recomendación predeterminada para bebida",
+                "summary": "Obtener recomendación predeterminada para bebidas",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
                         "description": "Valor para la recomendación (por ejemplo: 'Agua', 'Te', etc.)",
                         "required": true,
@@ -112,19 +141,26 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese bebidas",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
                         }    
                     }
                 }
             }
             
         },
-        "/recomendacion/predeterminado/Postre/{valor}": {
+        "/recommendation/default/desserts/{value}": {
             "get": {
                 "summary": "Obtener recomendación predeterminada para postre",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
                         "description": "Valor para la recomendación (por ejemplo: 'helado', 'galletas', etc.)",
                         "required": true,
@@ -135,20 +171,27 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
                         } 
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese postre",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
                     }
                 }
             }
         },
-        "/recomendacion/consultaExterna/PlatoPrincipal/{valor}": {
+        "/recommendation/externalSystem/maindishes/{value}": {
             "get": {
                 "summary": "Obtener recomendación de un companero para plato principal",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'picante', 'dulce', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -157,22 +200,29 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
                         }
                             
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese platillo",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
                     }
                     
                 }
             }
         },
-        "/recomendacion/consultaExterna/Bebida/{valor}": {
+        "/recommendation/externalSystem/drinks/{value}": {
             "get": {
                 "summary": "Obtener recomendación de un companero para bebida",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'Agua', 'Te', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'Agua', 'Te', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -181,20 +231,27 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
                             }
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para esa bebida",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
                     }
                 }
             }
         },
-        "/recomendacion/consultaExterna/Postre/{valor}": {
+        "/recommendation/externalSystem/desserts/{value}": {
             "get": {
                 "summary": "Obtener recomendación de un companero para postre",
                 "parameters": [
                     {
-                        "name": "valor",
+                        "name": "value",
                         "in": "path",
-                        "description": "Valor para la recomendación (por ejemplo: 'helado', 'galletas', etc.)",
+                        "description": "value para la recomendación (por ejemplo: 'helado', 'galletas', etc.)",
                         "required": true,
                         "type": "string"
                     }
@@ -203,28 +260,36 @@
                     "200": {
                         "description": "Respuesta Exitosa",
                         "schema": {
-                            "$ref": "#/components/schemas/Recomendacion"
+                            "$ref": "#/components/schemas/recommendation"
                             }
-                    }   
+                    },
+
+                    "404": {
+                        "description": "No ofrecemos recomendaciones para ese postre",
+                        "schema": {
+                            "$ref": "#/components/schemas/recommendation"
+                        }    
+                    }
                 }
             }
         }
     },
     "components": {
         "schemas": {
-            "Recomendacion": {
+            "recommendation": {
+                
                 "type": "object",
                 "properties": {
-                    "platos": {
+                    "dishes": {
                         "type": "object",
                         "properties": {
-                            "comida_principal": {
+                            "maindishes": {
                                 "type": "object",
                                 "properties": {
-                                    "nombre": {
+                                    "name": {
                                         "type": "string"
                                     },
-                                    "combina_con": {
+                                    "combination": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
@@ -232,13 +297,13 @@
                                     }
                                 }
                             },
-                            "bebida": {
+                            "drinks": {
                                 "type": "object",
                                 "properties": {
-                                    "nombre": {
+                                    "name": {
                                         "type": "string"
                                     },
-                                    "combina_con": {
+                                    "combination": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
@@ -246,13 +311,13 @@
                                     }
                                 }
                             },
-                            "postre": {
+                            "desserts": {
                                 "type": "object",
                                 "properties": {
-                                    "nombre": {
+                                    "name": {
                                         "type": "string"
                                     },
-                                    "combina_con": {
+                                    "combination": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
