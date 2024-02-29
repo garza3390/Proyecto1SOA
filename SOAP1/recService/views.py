@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import json
 import os
 
-def recommendation(request,type,value):
+def default(request,type,value):
 
     file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/db/db.json')
     if not os.path.exists(file_path):
@@ -31,6 +31,11 @@ def recommendation(request,type,value):
     except:
         return HttpResponse('Parece que estas combinando mal el tipo y el plato', status=404)
 
+def artificial(request,type,value):
+    pass
+
+def externalSystem(request,type,value):
+    pass
 
 def data(request):
 
