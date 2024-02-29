@@ -1,0 +1,29 @@
+{
+  "maindishes": {
+    "arroz_con_pollo": {
+      "name": "Arroz con Pollo",
+      "combination": [
+        "bebida1",
+        "postre1"
+      ]
+      } 
+    },
+    "drinks": {
+      "cafe": {
+        "name": "Café",
+        "combination": [
+          "postre2",
+          "comida1"
+        ]
+        } 
+      },
+      "desserts": {
+        "dessert1": {
+          "name": "torta",
+          "combination": [
+            "comida2",
+            "bebida2"
+          ]
+          } 
+        }
+  }
