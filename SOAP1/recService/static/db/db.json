@@ -17,7 +17,7 @@
     "pizza": {
       "name": "Pizza",
       "combination": [
-        "Coca Cola",
+        "Fresca",
         "Tiramisu"
       ]
     },
@@ -39,20 +39,13 @@
       "name": "Pasta Carbonara",
       "combination": [
         "Vino tinto",
-        "Tiramisu"
-      ]
-    },
-    "curry": {
-      "name": "Curry",
-      "combination": [
-        "Lassi",
-        "Gulab jamun"
+        "Tres leches"
       ]
     },
     "paella": {
       "name": "Paella",
       "combination": [
-        "Sangría",
+        "Sangria",
         "Flan"
       ]
     },
@@ -63,13 +56,6 @@
         "Helado de fresa"
       ]
     },
-    "sashimi": {
-      "name": "Sashimi",
-      "combination": [
-        "Té verde",
-        "Dorayaki"
-      ]
-    },
     "lasagna": {
       "name": "Lasagna",
       "combination": [
@@ -77,33 +63,75 @@
         "Cannoli"
       ]
     },
-    "pad_thai": {
-      "name": "Pad Thai",
+    "pescado_frito": {
+      "name": "Pescado frito",
       "combination": [
-        "Limonada tailandesa",
-        "Arroz pegajoso con mango"
-      ]
-    },
-    "spaghetti_bolognese": {
-      "name": "Spaghetti Bolognese",
-      "combination": [
-        "Vino tinto",
-        "Tiramisu"
+        "Te verde",
+        "Dorayaki"
       ]
     }
   },
   "drinks": {
-    "cafe": {
-      "name": "Café",
+    "coca_cola": {
+      "name": "Coca Cola",
       "combination": [
-        "Pasta carbonara",
+        "Arroz con Pollo",
+        "Torta chilena"
+      ]
+    },
+    "pepsi": {
+      "name": "Pepsi",
+      "combination": [
+        "Arroz con Cerdo",
+        "Pastel de zanahoria"
+      ]
+    },
+    "fresca": {
+      "name": "Fresca",
+      "combination": [
+        "Pizza",
         "Tiramisu"
       ]
     },
-    "te_verde": {
-      "name": "Té Verde",
+    "sake": {
+      "name": "Sake",
       "combination": [
-        "Sashimi",
+        "Sushi",
+        "Mochi"
+      ]
+    },
+    "agua_de_horchata": {
+      "name": "Agua de Horchata",
+      "combination": [
+        "Tacos",
+        "Churros"
+      ]
+    },
+    "vino_tinto": {
+      "name": "Vino tinto",
+      "combination": [
+        "Pasta Carbonara",
+        "Tres leches"
+      ]
+    },
+    "vino_blanco": {
+      "name": "Vino blanco",
+      "combination": [
+        "Lasagna",
+        "Cannoli"
+      ]
+    },
+    "fanta": {
+      "name": "Fanta",
+      "combination": [
+        "Hamburguesa",
+        "Helado de fresa"
+      ]
+    },
+    "te_verde": {
+      "name": "Te Verde",
+      "combination": [
+        "Pescado frito",
         "Dorayaki"
       ]
     },
@@ -115,7 +143,7 @@
       ]
     },
     "sangria": {
-      "name": "Sangría",
+      "name": "Sangria",
       "combination": [
         "Paella",
         "Flan"
@@ -142,13 +170,6 @@
         "Galleta Oreo"
       ]
     },
-    "vino_tinto": {
-      "name": "Vino Tinto",
-      "combination": [
-        "Spaghetti bolognese",
-        "Tiramisu"
-      ]
-    },
     "mojito": {
       "name": "Mojito",
       "combination": [
@@ -158,39 +179,74 @@
     }
   },
   "desserts": {
-    "tres_leches": {
-      "name": "Tres leches",
+    "torta_chilena": {
+      "name": "Torta chilena",
       "combination": [
         "Arroz con Pollo",
         "Coca Cola"
       ]
     },
-    "chocolate_caliente": {
-      "name": "Chocolate Caliente",
+    "pastel_de_zanahoria": {
+      "name": "Pastel de zanahoria",
       "combination": [
         "Arroz con Cerdo",
         "Pepsi"
+      ]
+    },
+    "tiramisu": {
+      "name": "Tiramisu",
+      "combination": [
+        "Pizza",
+        "Fresca"
+      ]
+    },
+    "mochi": {
+      "name": "Mochi",
+      "combination": [
+        "Sushi",
+        "Sake"
       ]
     },
     "churros": {
       "name": "Churros",
       "combination": [
         "Tacos",
-        "Limonada"
+        "Agua de horchata"
+      ]
+    },
+    "tres_leches": {
+      "name": "Tres leches",
+      "combination": [
+        "Pasta Carbonara",
+        "Vino tinto"
+      ]
+    },
+    "helado_de_fresa": {
+      "name": "Helado de fresa",
+      "combination": [
+        "Hamburguesa",
+        "Fanta"
+      ]
+    },
+    "cannoli": {
+      "name": "Cannoli",
+      "combination": [
+        "Lasagna",
+        "Vino blanco"
       ]
     },
     "dorayaki": {
       "name": "Dorayaki",
       "combination": [
         "Pescado frito",
-        "Té verde"
+        "Te verde"
       ]
     },
     "flan": {
       "name": "Flan",
       "combination": [
         "Paella",
-        "Sangría"
+        "Sangria"
       ]
     }
   }
