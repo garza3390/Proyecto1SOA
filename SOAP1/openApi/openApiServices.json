@@ -276,7 +276,7 @@
     },
     "components": {
         "schemas": {
-          "Recomendacion": {
+          "Reccomendation": {
             "type": "array",
             "items": {
               "type": "string"
