@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from openai import OpenAI
 import json
 import os
+
+client = OpenAI()
 
 def default(request,type,value):
 
@@ -31,8 +34,24 @@ def default(request,type,value):
     except:
         return HttpResponse('Parece que estas combinando mal el tipo y el plato', status=404)
 
-def artificial(request,type,value):
-    pass
+def artificial(request,_type,value):
+
+    value = _type + ": " + value
+    print("\n")
+    completion = client.chat.completions.create(
+      model="gpt-3.5-turbo",
+      messages=[
+        {"role": "system", 
+        "content": """Eres un recomendador de platos completos, y debes completar la combinación [plato,bebida,postre].
+        El usuario te provee uno de ellos y tú respondes únicamente con un arreglo que contenga la combinación completa."""},
+        {"role": "user", "content": value}
+      ]
+    )
+    
+    serviceRecommendation = completion.choices[0].message.content
+    print(serviceRecommendation)
+
+    return HttpResponse(serviceRecommendation, status=200)
 
 def externalSystem(request,type,value):
     pass
