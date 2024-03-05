@@ -41,7 +41,7 @@ def artificial(request,_type,value):
     completion = client.chat.completions.create(
       model="gpt-3.5-turbo",
       messages=[
-        {"role": "system", 
+		{"role": "system", 
         "content": """Eres un recomendador de platos completos, y debes completar la combinación plato, bebida y postre
         recomendando lo que mejor combine para el usuario. El usuario te provee uno, o dos, de los elementos de la combinación
         y tú completas la combinación respondiendo con el siguiente formato: 
