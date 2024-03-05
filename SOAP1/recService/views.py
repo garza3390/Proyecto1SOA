@@ -155,13 +155,22 @@ def defaultComplete(request,value1,value2):
 
 def artificial(request,_type,value):
 
+    if(_type == "maindishes"):
+        _type = "Plato principal"
+    elif(_type == "drinks"):
+        _type = "Bebida"
+    elif(_type == "desserts"):
+        _type = "Postre"
+    else:
+        _type = "Combinar"
+
     value = _type + ": " + value
     print("\n")
     completion = client.chat.completions.create(
       model="gpt-3.5-turbo",
       messages=[
 		{"role": "system", 
-        "content": """Eres un recomendador de platos completos, y debes completar la combinación plato, bebida y postre
+        "content": """Eres un recomendador de platos completos, y debes completar la combinación Plato Principal, Bebida y Postre
         recomendando lo que mejor combine para el usuario. El usuario te provee uno, o dos, de los elementos de la combinación
         y tú completas la combinación respondiendo con el siguiente formato: 
         {Plato Principal: "Tu respuesta", Bebida: "Tu respuesta", Postre: "Tu respuesta"}."""},
