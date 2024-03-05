@@ -156,7 +156,7 @@ def defaultComplete(request,value1,value2):
 def artificial(request,_type,value):
 
     if(_type == "maindishes"):
-        _type = "Plato principal"
+        _type = "Plato Principal"
     elif(_type == "drinks"):
         _type = "Bebida"
     elif(_type == "desserts"):
