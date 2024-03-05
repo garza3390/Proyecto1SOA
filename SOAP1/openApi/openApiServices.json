@@ -68,6 +68,62 @@
       },
       "/recService_v1.0/default/complete/{value1}/{value2}": {
         "get": {
+          "summary": "Obtener recomendación prederteminada para 2 comidas",
+          "parameters": [
+            {
+              "name": "value1",
+              "in": "path",
+              "description": "Inserta alimento 1 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "value2",
+              "in": "path",
+              "description": "Inserta alimento 2 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Respuesta Exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
+                    }
+                  }
+              }
+            },
+            "404": {
+              "description": "No ofrecemos recomendaciones para esa solicitud"
+            }
+          }
+        }
+      },
+      "/recService_v1.0/artificial/complete/{value1}/{value2}": {
+        "get": {
           "summary": "Obtener recomendación artificial para 2 comidas",
           "parameters": [
             {
@@ -234,14 +290,36 @@
           }
         }
       },
-      "/recService_v1.0/externalSystem/{value1}/{value2}": {
+      "/recService_v1.0/externalSystem/{type1}/{value1}/{type2}/{value2}": {
         "get": {
           "summary": "Obtener recomendación del sistema externo para 2 comidas",
           "parameters": [
             {
+              "name": "type1",
+              "in": "path",
+              "description": "Insertar el Tipo de comida 1 para la recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
               "name": "value1",
               "in": "path",
               "description": "Insertar alimento 1 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "type2",
+              "in": "path",
+              "description": "Insertar el Tipo de comida 2 para la recomendacion",
               "required": true,
               "style": "simple",
               "explode": false,
