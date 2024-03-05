@@ -10,14 +10,25 @@
       }
     ],
     "paths": {
-      "/artificial/maindishes/{value}": {
+      "/recService_v1.0/default/{type}/{value}": {
         "get": {
-          "summary": "Obtener recomendación artificial para plato principal",
+          "summary": "Obtener recomendación predeterminada para una comida",
           "parameters": [
+            {
+              "name": "type",
+              "in": "path",
+              "description": "Insertar el Tipo de comida recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
             {
               "name": "value",
               "in": "path",
-              "description": "Obtiene recomendacion de OPENAI; Input: Plato Principal; Output:[Bebida,Postre]",
+              "description": "Insertar Comida que busca para la recomendacion",
               "required": true,
               "style": "simple",
               "explode": false,
@@ -30,30 +41,106 @@
             "200": {
               "description": "Respuesta Exitosa",
               "content": {
-                "*/*": {
+                "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
                     }
                   }
-                }
               }
             },
             "404": {
-              "description": "No ofrecemos recomendaciones para ese platillo"
+              "description": "No ofrecemos recomendaciones para esa solicitud"
             }
           }
         }
       },
-      "/artificial/drinks/{value}": {
+      "/recService_v1.0/default/complete/{value1}/{value2}": {
         "get": {
-          "summary": "Obtener recomendación artificial para drinks",
+          "summary": "Obtener recomendación artificial para 2 comidas",
           "parameters": [
+            {
+              "name": "value1",
+              "in": "path",
+              "description": "Inserta alimento 1 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "value2",
+              "in": "path",
+              "description": "Inserta alimento 2 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Respuesta Exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
+                    }
+                  }
+              }
+            },
+            "404": {
+              "description": "No ofrecemos recomendaciones para esa solicitud"
+            }
+          }
+        }
+      },
+      "/recService_v1.0/artificial/{type}/{value}": {
+        "get": {
+          "summary": "Obtener recomendación artificial para una comida",
+          "parameters": [
+            {
+              "name": "type",
+              "in": "path",
+              "description": "Insertar el Tipo de comida para la recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
             {
               "name": "value",
               "in": "path",
-              "description": "Obtiene recomendacion de OPENAI; Input: Bebida; Output:[PlatoPrincipal,Postre]",
+              "description": "Insertar Comida que busca para la recomendacion",
               "required": true,
               "style": "simple",
               "explode": false,
@@ -66,30 +153,50 @@
             "200": {
               "description": "Respuesta Exitosa",
               "content": {
-                "*/*": {
+                "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
                     }
                   }
-                }
               }
             },
             "404": {
-              "description": "No ofrecemos recomendaciones para esa drinks"
+              "description": "No ofrecemos recomendaciones para esa solicitud"
             }
           }
         }
       },
-      "/desserts/{value}": {
+      "/recService_v1.0/externalSystem/{type}/{value}": {
         "get": {
-          "summary": "Obtener recomendación artificial para postre",
+          "summary": "Obtener recomendación de sistema externo para una comida",
           "parameters": [
+            {
+              "name": "type",
+              "in": "path",
+              "description": "Insertar el Tipo de comida recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
             {
               "name": "value",
               "in": "path",
-              "description": "Obtiene recomendacion de OPENAI; Input: Postre; Output:[PlatoPrincipal,Bebida]",
+              "description": "Insertar Comida que busca para la recomendacion",
               "required": true,
               "style": "simple",
               "explode": false,
@@ -102,30 +209,50 @@
             "200": {
               "description": "Respuesta Exitosa",
               "content": {
-                "*/*": {
+                "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
                     }
                   }
-                }
               }
             },
             "404": {
-              "description": "No ofrecemos recomendaciones para ese postre"
+              "description": "No ofrecemos recomendaciones para esa solicitud"
             }
           }
         }
       },
-      "/default/maindishes/{value}": {
+      "/recService_v1.0/externalSystem/{value1}/{value2}": {
         "get": {
-          "summary": "Obtener recomendación predeterminada para plato principal",
+          "summary": "Obtener recomendación del sistema externo para 2 comidas",
           "parameters": [
             {
-              "name": "value",
+              "name": "value1",
               "in": "path",
-              "description": "Obtiene recomendacion por defecto; Input: Plato Principal; Output:[Bebida,Postre]",
+              "description": "Insertar alimento 1 de la cual busca recomendacion",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "value2",
+              "in": "path",
+              "description": "Insertar alimento 2 de la cual busca recomendacion",
               "required": true,
               "style": "simple",
               "explode": false,
@@ -138,312 +265,62 @@
             "200": {
               "description": "Respuesta Exitosa",
               "content": {
-                "*/*": {
+                "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
                     }
                   }
-                }
               }
             },
             "404": {
-              "description": "No ofrecemos recomendaciones para ese platillo"
+              "description": "No ofrecemos recomendaciones para esa solicitud"
             }
           }
         }
       },
-      "/default/drinks/{value}": {
+      "/recService_v1.0/data": {
         "get": {
-          "summary": "Obtener recomendación predeterminada para bebidas",
-          "parameters": [
-            {
-              "name": "value",
-              "in": "path",
-              "description": "Obtiene recomendacion por defecto; Input: Bebida; Output:[PlatoPrincipal,Postre]",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
+          "summary": "Obtener los platillos guardados en la base de datos",
           "responses": {
             "200": {
               "description": "Respuesta Exitosa",
               "content": {
-                "*/*": {
+                "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
+                      "type": "string",
+                      "properties": {
+                        "Plato Principal": {
+                          "type": "string"
+                        },
+                        "Bebida": {
+                          "type": "string"
+                        },
+                        "Postre": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["Plato Principal", "Bebida", "Postre"]
                     }
                   }
-                }
               }
             },
             "404": {
-              "description": "No ofrecemos recomendaciones para ese bebidas"
-            }
-          }
-        }
-      },
-      "/default/desserts/{value}": {
-        "get": {
-          "summary": "Obtener recomendación predeterminada para postre",
-          "parameters": [
-            {
-              "name": "value",
-              "in": "path",
-              "description": "Obtiene recomendacion por defecto; Input: Postre; Output:[PlatoPrincipal,Bebida]",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese postre"
-            }
-          }
-        }
-      },
-      "/externalSystem/maindishes/{value}": {
-        "get": {
-          "summary": "Obtener recomendación de un companero para plato principal",
-          "parameters": [
-            {
-              "name": "value",
-              "in": "path",
-              "description": "Obtiene recomendacion de sistema Externo; Input: Plato Principal; Output:[Bebida,Postre]",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese platillo"
-            }
-          }
-        }
-      },
-      "/externalSystem/drinks/{value}": {
-        "get": {
-          "summary": "Obtener recomendación de un companero para bebida",
-          "parameters": [
-            {
-              "name": "value",
-              "in": "path",
-              "description": "Obtiene recomendacion de sistema Externo; Input: Bebida; Output:[PlatoPrincipal,Postre]",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para esa bebida"
-            }
-          }
-        }
-      },
-      "/externalSystem/desserts/{value}": {
-        "get": {
-          "summary": "Obtener recomendación de un companero para postre",
-          "parameters": [
-            {
-              "name": "value",
-              "in": "path",
-              "description": "Obtiene recomendacion de sistema Externo; Input: Postre; Output:[PlatoPrincipal,Bebida]",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese postre"
-            }
-          }
-        }
-      },
-      "/artificial/mixed/{values}": {
-        "get": {
-          "summary": "Obtener recomendación Artificial de dos platos",
-          "description": "Obtiene recomendacion artificial dos platos; Input1:Plato Principal-Bebida, Output1:[Postre]; Input2: Plato Principal-Postre, Output2:[Bebida]; Input3: Bebida-Postre, Output3:[PlatoPrincipal]",
-          "parameters": [
-            {
-              "name": "values",
-              "in": "path",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese par de platillos"
-            }
-          }
-        }
-      },
-      "/default/mixed/{values}": {
-        "get": {
-          "summary": "Obtener recomendación predeterminada de dos platos",
-          "description": "Obtiene recomendacion predeterminada dos platos; Input1:Plato Principal-Bebida, Output1:[Postre]; Input2: Plato Principal-Postre, Output2:[Bebida]; Input3: Bebida-Postre, Output3:[PlatoPrincipal]",
-          "parameters": [
-            {
-              "name": "values",
-              "in": "path",
-              "description": "Dos platos separados por un guion medio (-) ",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese par de platillos"
-            }
-          }
-        }
-      },
-      "/externalSystem/mixed/{values}": {
-        "get": {
-          "summary": "Obtener recomendación de sistema externo para dos platos",
-          "description": "Obtiene recomendacion externa dos platos; Input1:Plato Principal-Bebida, Output1:[Postre]; Input2: Plato Principal-Postre, Output2:[Bebida]; Input3: Bebida-Postre, Output3:[PlatoPrincipal]",
-          "parameters": [
-            {
-              "name": "values",
-              "in": "path",
-              "description": "Dos platos separados por un guion medio (-) ",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Respuesta Exitosa",
-              "content": {
-                "*/*": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "No ofrecemos recomendaciones para ese par de platillos"
+              "description": "No ofrecemos recomendaciones para esa solicitud"
             }
           }
         }
       }
-    },
-    "components": {}
   }
+}
