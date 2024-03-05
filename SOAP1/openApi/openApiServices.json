@@ -6,7 +6,7 @@
     },
     "servers": [
       {
-        "url": "http://soa-grupo4-api.azurewebsites.net"
+        "url": "http://18.188.50.103:8000"
       }
     ],
     "paths": {
