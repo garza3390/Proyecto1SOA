@@ -1,5 +1,7 @@
+import requests
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from openai import OpenAI
 import json
 import os
@@ -47,7 +49,6 @@ def formaResponseList2(type1,type2,list):
     list = [type1+list[0],type2+list[1],allValues[0]+list[2]]
 
     return list
-
 
 def default(request,type,value):
 
@@ -131,7 +132,6 @@ def defaultComplete(request,value1,value2):
     if type2 == None:
         return HttpResponse('No poseemos el segundo platillo', status=404)
 
-
     try:
         servRec1 = data[type1][value1]["combination"]
         servRec2 = data[type2][value2]["combination"]
@@ -209,10 +209,103 @@ def artificialComplete(request,value1,value2):
     return HttpResponse(serviceRecommendation, status=200)
 
 def externalSystem(request,type,value):
-    pass
+    # Inicializamos el JSON con valores predeterminados
+    response_data = {
+        "meal": {
+            "dessert": "",
+            "drink": "",
+            "main_dish": ""
+        },
+        "recommendation_of": [],
+        "src": "localdb"
+    }
 
-def externalSystem2(request,value1,value2):
-    pass
+    # Verificamos el valor de 'type' y actualizamos el JSON
+    if type == "maindishes":
+        response_data["meal"]["main_dish"] = value
+        response_data["recommendation_of"] = ["drink", "dessert"]
+    elif type == "drinks":
+        response_data["meal"]["drink"] = value
+        response_data["recommendation_of"] = ["main_dish", "dessert"]
+    elif type == "desserts":
+        response_data["meal"]["dessert"] = value
+        response_data["recommendation_of"] = ["main_dish", "drink"]
+    else:
+        # Si 'type' no es uno de los valores esperados
+        return JsonResponse({"error": "Tipo no válido"}, status=400)
+
+    return getExternalResponse(response_data)
+
+def externalSystemComplete(request,type1,value1,type2,value2):
+    # Inicializamos el JSON con valores predeterminados
+    response_data = {
+        "meal": {
+            "dessert": "",
+            "drink": "",
+            "main_dish": ""
+        },
+        "recommendation_of": [],
+        "src": "localdb"
+    }
+
+    # Verificamos los valores de type1, value1, type2, y value2 y actualizamos el JSON
+    if type1 == "drinks":
+        response_data["meal"]["drink"] = value1
+    elif type1 == "maindishes":
+        response_data["meal"]["main_dish"] = value1
+    elif type1 == "desserts":
+        response_data["meal"]["dessert"] = value1
+    else:
+        # Si type1 no es uno de los valores esperados
+        return JsonResponse({"error": "Tipo no válido"}, status=400)
+
+    if type2 == "drinks":
+        response_data["meal"]["drink"] = value2
+    elif type2 == "maindishes":
+        response_data["meal"]["main_dish"] = value2
+    elif type2 == "desserts":
+        response_data["meal"]["dessert"] = value2
+    else:
+        # Si type2 no es uno de los valores esperados
+        return JsonResponse({"error": "Tipo no válido"}, status=400)
+
+    if type1 != "drinks" and type2 != "drinks":
+        response_data["recommendation_of"] = ["dessert"]
+    elif type1 != "maindishes" and type2 != "maindishes":
+        response_data["recommendation_of"] = ["main_dish"]
+    elif type1 != "desserts" and type2 != "desserts":
+        response_data["recommendation_of"] = ["dessert"]
+
+    return getExternalResponse(response_data)
+
+def getExternalResponse(response_data):
+    # URL de destino
+    post_url = "http://34.208.253.148/gen-recommendation/"
+
+    try:
+        # Realizamos la solicitud POST con el JSON construido
+        response = requests.post(post_url, json=response_data)
+
+        # Verificamos el código de estado de la respuesta
+        if response.status_code == 200:
+            # La solicitud fue exitosa, procesamos la respuesta JSON
+            recommendation_data = response.json()
+
+           # Transformamos la respuesta al formato deseado
+            formatted_response = {
+                "Plato Principal": recommendation_data.get("main_dish", "").capitalize(),
+                "Bebida": recommendation_data.get("drink", "").capitalize(),
+                "Postre": recommendation_data.get("dessert", "").capitalize()
+            }
+
+            # Devolvemos la respuesta procesada
+            return JsonResponse(formatted_response)
+        else:
+            # La solicitud no fue exitosa, puedes manejarlo según tus necesidades
+            return JsonResponse({"error": f"Solicitud fallida con código de estado {response.status_code}"}, status=500)
+    except requests.exceptions.RequestException as e:
+        # Manejamos las excepciones de la solicitud
+        return JsonResponse({"error": f"Error en la solicitud: {str(e)}"}, status=500)
 
 def data(request):
 
