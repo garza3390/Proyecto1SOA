@@ -6,6 +6,49 @@ import os
 
 client = OpenAI()
 
+def formaResponseList(type,list):
+
+    if type == "maindishes":
+            list[0] = "Bebida: " + list[0]
+            list[1] = "Postre: " + list[1]
+            list[2] = "Plato Principal: " + list[2]
+    elif type == "drinks":
+            list[0] = "Plato Principal: " + list[0]
+            list[1] = "Postre: " + list[1]
+            list[2] = "Bebida: " + list[2]
+    elif type == "desserts":
+            list[0] = "Plato Principal: " + list[0]
+            list[1] = "Bebida: " + list[1]
+            list[2] = "Postre: " + list[2]
+
+    return list
+
+def formaResponseList2(type1,type2,list):
+
+    allValues = ["Plato Principal: ", "Bebida: ", "Postre: "]
+
+    if type1 == "maindishes":
+        type1 = "Plato Principal: "
+    elif type1 == "drinks":
+        type1 = "Bebida: "
+    elif type1 == "desserts":
+        type1 = "Postre: "
+
+    if type2 == "maindishes":
+        type2 = "Plato Principal: "
+    elif type2 == "drinks":
+        type2 = "Bebida: "
+    elif type2 == "desserts":
+        type2 = "Postre: "
+
+    allValues.remove(type1)
+    allValues.remove(type2)
+
+    list = [type1+list[0],type2+list[1],allValues[0]+list[2]]
+
+    return list
+
+
 def default(request,type,value):
 
     value = value.lower()
@@ -30,7 +73,10 @@ def default(request,type,value):
         return HttpResponse('No ofrecemos recomendaciones para esa solicitud', status=404)
     
     try:
-        serviceRecommendation = str(data[type][value]["combination"])
+        serviceRecommendation = data[type][value]["combination"] + [value.capitalize()]
+        serviceRecommendation = str(formaResponseList(type,serviceRecommendation))
+        serviceRecommendation = serviceRecommendation.replace("[","{").replace("]","}")
+        
 
         return HttpResponse(serviceRecommendation, content_type='application/json')
     
@@ -87,14 +133,18 @@ def defaultComplete(request,value1,value2):
 
 
     try:
-        servRec1 = str(data[type1][value1]["combination"])
-        servRec2 = str(data[type2][value2]["combination"])
+        servRec1 = data[type1][value1]["combination"]
+        servRec2 = data[type2][value2]["combination"]
         serviceRecommendation = []
         canCombinate = False
         for r in servRec1:
-            if r in servRec2:
+            if r in servRec2 and r.lower() != value1 and r.lower() != value2:
                 canCombinate = True
-                serviceRecommendation = [value1,value2,r]
+                serviceRecommendation = [value1.capitalize(),value2.capitalize(),r]
+                serviceRecommendation = str(formaResponseList2(type1,type2,serviceRecommendation))
+                serviceRecommendation = serviceRecommendation.replace("[","{").replace("]","}")
+                
+                break
         if not canCombinate:
             return HttpResponse("No encontramos una recomendación de acuerdo a esas dos entradas",status=404)
         
@@ -123,6 +173,9 @@ def artificial(request,_type,value):
     return HttpResponse(serviceRecommendation, status=200)
 
 def externalSystem(request,type,value):
+    pass
+
+def externalSystem2(request,value1,value2):
     pass
 
 def data(request):
